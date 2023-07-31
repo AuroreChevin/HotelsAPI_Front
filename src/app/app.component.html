@@ -1,3 +1,31 @@
-<button class="btn btn-success">RORY</button>
+<nav class="navbar navbar-expand-sm bg-success navbar-light">
+  <a class="navbar-brand text-white" href="#">SuperHotel</a>
+  <ul class="navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link text-white" href="#" (click)="getAllHotels()">Hôtels</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link text-white" >Ville de destination</a>
+      </li>       
+      <li class="nav-item" >
+          <a class="nav-link text-white" ></a>
+      </li>
+  </ul>
+  <ul class="navbar-nav ms-auto" >
+      <li >
+          <span class="fs-3 text-capitalize text-success"></span>
+        </li>
+      <ng-container  >
+      <li class="nav-item">
+          <a class="nav-link text-white">Login</a>
+      </li>
+      </ng-container>
+      <ng-template #elseBlock>
+          <li class="nav-item">
+              <a class="nav-link text-white">Logout</a>
+          </li>
+      </ng-template>
+  </ul>
+</nav>
 
 <router-outlet></router-outlet>
