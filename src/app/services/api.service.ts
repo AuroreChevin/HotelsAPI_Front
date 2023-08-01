@@ -19,4 +19,9 @@ export class ApiService {
   public getHotelsByCityId(id : number){
     return this.http.get<Hotel[]>(environment.host+'/hotels/cities/'+id);
   }
+  public postPhotoHotels(file : File, id : number){
+    let formData : FormData = new FormData();
+    formData.append('file', file);
+    return this.http.post<any>(environment.host+'/photo/'+id, formData);
+  }
 }
