@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { City } from 'src/app/models/city.model';
 import { Hotel } from 'src/app/models/hotel.model';
 import { ApiService } from 'src/app/services/api.service';
@@ -18,7 +19,7 @@ export class HotelsComponent implements OnInit{
   editPhoto : boolean | undefined;
   currentFileUpload : any;
   selectedFiles : any;
-  constructor(private apiService : ApiService){}
+  constructor(private apiService : ApiService, private router : Router){}
   ngOnInit(): void {
     this.host = environment.host;
     this.getListHotels();
@@ -61,5 +62,9 @@ export class HotelsComponent implements OnInit{
       complete : () => this.error = ""
     })
     window.location.reload();
+  }
+  
+  onHotelDetail(hotel : Hotel) {
+    this.router.navigateByUrl('zoom-hotel/' + hotel.id);   //ToDo afficher l'image associée pour modification
   }
 }

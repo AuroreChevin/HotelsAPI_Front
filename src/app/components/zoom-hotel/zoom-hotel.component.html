@@ -1,0 +1,22 @@
+<div class="container-fluid justify-content-center">
+    <div *ngIf="error">
+        <div class="text-danger"> {{error}}</div>  
+    </div>
+    <div class="col-md-3 m-auto">
+        <div class="card m-3 border-success" style="width: 350px; margin-right: 10px; margin-bottom: 10px;" *ngIf="this.hotel !=null">
+            <img class="img-thumbnail" alt=""[src]="host + '/photo/' +this.hotel.id"/>
+                <div class="row g-0">
+                    <div class="col">
+                        <div class="card-body">                                     
+                            <h5 class="card-title text-center text-danger">{{this.hotel.hotelName}}</h5>
+                            <p class="card-text"><small>{{this.hotel.address}}</small></p>
+                            <p class="card-text">Tél : <small>{{this.hotel.phone}}</small></p>
+                            <p class="card-text">Nombre d'étoiles : <small>{{this.hotel.nbStar}}</small></p>
+                            <p class="card-text">Nombre dechambres : <small>{{this.hotel.nbRoom}}</small></p>
+                            <p class="card-text">Prix/Nuit : <small>{{this.hotel.priceRoom | currency : 'EUR'}}</small></p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

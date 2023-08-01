@@ -5,26 +5,28 @@
             <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <span class="fs-5 d-none d-sm-inline" *ngIf="listCities">Destinations</span>
             </a>
+            <form class="form-inline">
+              <input class="form-control mr-sm-2 mb-2" type="search" placeholder="Chercher une ville" aria-label="Search">
+              <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+            </form>
             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                 <li class="nav-item" *ngFor="let city of listCities" (click)="getHotelByCity(city.id)">
                     <button class="nav-link align-middle px-0 text-white">{{city.cityName}}
                     </button>
                 </li>
             </ul>
-            <hr>
         </div>
     </div>
     <div class="col py-3">
       <div class="row justify-content-center">
         <ng-container *ngIf="listHotels">
               <div class="card m-3 border-success" style="width: 350px; margin-right: 10px; margin-bottom: 10px;" *ngFor="let hotel of listHotels">
-                  <img class="img-thumbnail img-rounded btn" alt=""[src]="host + '/photo/' +hotel.id"/>
+                  <img class="img-thumbnail img-rounded btn" alt="" (click)="onHotelDetail(hotel)" [src]="host + '/photo/' +hotel.id"/>
                   <div class="row g-0">
                         <div class="col">
                           <div class="card-body">
                             <div>
-                              <button (click)="onEditPhoto(hotel)">
-                                <span class="fa fa-download"></span>
+                              <button class="btn btn-dark mb-2" (click)="onEditPhoto(hotel)">Photo
                               </button>
                               <p *ngIf="editPhoto && currentHotel == hotel">
                                 <input type="file" (change)="onSelectedFile($event)">
