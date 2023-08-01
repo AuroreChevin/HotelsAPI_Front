@@ -5,16 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ZoomHotelComponent } from './components/zoom-hotel/zoom-hotel.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormLoginComponent } from './components/form-login/form-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HotelsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ZoomHotelComponent,
+    FormLoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],

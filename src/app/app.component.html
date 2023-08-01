@@ -1,29 +1,27 @@
 <nav class="navbar navbar-expand-sm bg-success navbar-light">
   <a class="navbar-brand text-white" href="#">SuperHotel</a>
-  
   <ul class="navbar-nav">
       <li class="nav-item">
           <a class="nav-link text-white" href="#" (click)="getAllHotels()">Hôtels</a>
       </li>      
-      <li class="nav-item" >
-          <a class="nav-link text-white" ></a>
+      <li class="nav-item" *ngIf="this.authService.isAdmin()">
+          <a class="nav-link text-white" >Dashboard Admin</a>
       </li>
   </ul>
   <ul class="navbar-nav ms-auto" >
-      <li >
-          <span class="fs-3 text-capitalize text-success"></span>
+      <li *ngIf="isLoggedIn()" >
+          <span class="fs-3 text-capitalize text-white">{{this.authService.getUser().username}}</span>
         </li>
-      <ng-container  >
+      <ng-container *ngIf="this.authService.getToken() == null , else elseBlock" >
       <li class="nav-item">
-          <a class="nav-link text-white">Login</a>
+          <a class="nav-link text-white" routerLink="/form-login">Login</a>
       </li>
-      </ng-container>
+      </ng-container >
       <ng-template #elseBlock>
           <li class="nav-item">
-              <a class="nav-link text-white">Logout</a>
+              <a class="nav-link text-white" routerLink="/hotels"(click)="logout()">Logout</a>
           </li>
       </ng-template>
   </ul>
 </nav>
-
 <router-outlet></router-outlet>
