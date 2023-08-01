@@ -24,7 +24,7 @@ export class ZoomHotelComponent implements OnInit{
         next : (data) => {
             this.hotel = data;
         },
-        error : (err) => this.error = "problème"
+        error : (err) => this.error = "problème de chargement de l'hôtel"
       })
     }
   }

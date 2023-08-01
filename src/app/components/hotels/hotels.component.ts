@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { City } from 'src/app/models/city.model';
 import { Hotel } from 'src/app/models/hotel.model';
@@ -13,13 +14,20 @@ import { environment } from 'src/environment/environment';
 export class HotelsComponent implements OnInit{
   listHotels : Hotel[] = [];
   listCities : City [] = [];
+  oneCity : City | undefined;
   error : string | undefined;
   host : string ="";
   currentHotel : any;
   editPhoto : boolean | undefined;
   currentFileUpload : any;
   selectedFiles : any;
-  constructor(private apiService : ApiService, private router : Router){}
+  searchForm : FormGroup;
+  searchError: any;
+  constructor(private apiService : ApiService, private router : Router){
+    this.searchForm = new FormGroup({
+      keyword: new FormControl()
+    })
+  }
   ngOnInit(): void {
     this.host = environment.host;
     this.getListHotels();
@@ -63,8 +71,34 @@ export class HotelsComponent implements OnInit{
     })
     window.location.reload();
   }
-  
   onHotelDetail(hotel : Hotel) {
-    this.router.navigateByUrl('zoom-hotel/' + hotel.id);   //ToDo afficher l'image associée pour modification
+    this.router.navigateByUrl('zoom-hotel/' + hotel.id);
   }
-}
+  getCityById(id:number){
+    this.apiService.getCityById(id).subscribe({
+      next : (data) => {
+        this.oneCity = data;
+    },
+    error : (err) => this.error = "problème de chargement de l'hôtel"
+    })
+  }
+  onSearch(form : FormGroup){
+    if(form.valid){
+      this.apiService.getCityByKeyword(form.value.keyword).subscribe({
+        next: (data) => {
+          if (data.length === 0) {
+            this.searchError = "Aucune ville trouvée !"
+            this.listCities = [];
+          } else {
+            this.listCities = data
+            this.searchError = ""
+          }
+        },
+        error: (err) => this.error = "problème",
+        complete: () => this.error = ""
+      })
+    }
+
+    }
+  }
+
