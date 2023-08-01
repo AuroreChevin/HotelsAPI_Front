@@ -14,10 +14,25 @@ export class HotelsComponent implements OnInit{
   error : string | undefined;
   constructor(private apiService : ApiService){}
   ngOnInit(): void {
-    this.getAllHotels();
+    this.getListHotels();
+    this.getListCities();
   }
-  getAllHotels(){
-    this.apiService.getHotels().subscribe({
+  getListHotels(){
+    this.apiService.getAllHotels().subscribe({
+      next : (data) => this.listHotels = data,
+      error: (err) => this.error = "Problème au chargement de la liste",
+      complete : () => this.error = ""
+    })
+   }
+   getListCities(){
+    this.apiService.getAllCities().subscribe({
+      next : (data) => this.listCities = data,
+      error: (err) => this.error = "Problème au chargement de la liste",
+      complete : () => this.error = ""
+    })
+   }
+   getHotelByCity(id:number){
+    this.apiService.getHotelsByCityId(id).subscribe({
       next : (data) => this.listHotels = data,
       error: (err) => this.error = "Problème au chargement de la liste",
       complete : () => this.error = ""

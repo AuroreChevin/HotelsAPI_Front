@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
   }
  getAllHotels(){
-  this.apiService.getHotels().subscribe({
+  this.apiService.getAllHotels().subscribe({
     next : (data) => this.listHotels = data,
     error: (err) => this.error = "Problème au chargement de la liste",
     complete : () => this.error = ""
