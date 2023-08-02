@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { User } from '../models/user.model';
 export class AuthServiceService {
   userConnected : User = new User('', '', [])
   constructor(private http : HttpClient) { }
+
   public postUser(username : string, password : string) : Observable<any>{
     const formData = new FormData;
     formData.append("username", username);
@@ -51,11 +53,15 @@ export class AuthServiceService {
     }
     return false;
   }
-  isManager(){
+  public isManager(){
     let user = this.getUser();
     if(user.roles.length> 0){
       if(user.roles.indexOf('MANAGER')>-1)return true;
     }
     return false;
+  }
+  public getManagers(rolename : string){
+    console.log('coucou')
+    return this.http.get<User[]>(environment.host+ '/users/'+rolename, {headers : new HttpHeaders({'Authorization' : this.getToken()}) });
   }
 }

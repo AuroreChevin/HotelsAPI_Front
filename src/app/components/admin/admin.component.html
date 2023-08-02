@@ -3,15 +3,13 @@
       <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
               <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                  <span class="fs-5 d-none d-sm-inline  text-capitalize" >Bonjour {{this.authService.getUser().username}}</span>
+                  <span class="fs-3 d-none d-sm-inline  text-capitalize" >Bonjour {{this.authService.getUser().username}}</span>
               </a>
               <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                   <li class="nav-item" >
                       <button class="nav-link align-middle px-0 text-white" (click)="getListCities()">Villes
                       </button>
-                      <button class="nav-link align-middle px-0 text-white" (click)="getListHotels()">Hotels
-                    </button>
-                    <button class="nav-link align-middle px-0 text-white">Managers
+                    <button class="nav-link align-middle px-0 text-white" (click)="getListManagers()">Managers
                     </button>
                   </li>
               </ul>
@@ -20,7 +18,8 @@
       <div class="col">
         <div class="row justify-content-center" >
           <ng-container >
-            <table class="table table-striped" *ngIf="showTable">
+            <h3 class="text-center">Villes</h3>
+            <table class="table table-striped">
                 <thead >
                     <tr>
                         <th>Id</th><th>Ville</th><th>Description</th><th>Actions</th>
@@ -39,19 +38,17 @@
                 </tbody>
             </table>
           </ng-container>
-          <ng-container *ngIf="showTable">
+          <ng-container>
+            <h3 class="text-center">Managers</h3>
             <table class="table table-striped" >
                 <thead>
                     <tr>
-                        <th>Id</th><th>Hôtel</th><th>Ville</th><th>Manager</th><th>Actions</th>
+                        <th>Nom</th><th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let hotel of listHotels">
-                    <td>{{hotel.id}}</td>
-                    <td>{{hotel.hotelName}}</td>
-                    <td>{{hotel.city.cityName}}</td>
-                    <td></td>
+                <tr *ngFor="let user of listManagers">
+                    <td>{{user.username}}</td>
                     <td><button class="btn btn-danger me-2">Delete</button>
                         <button class="btn btn-success me-2">Edit</button>
                         <button class="btn btn-primary ">New</button>
