@@ -11,6 +11,7 @@ import { FormLoginComponent } from './components/form-login/form-login.component
 import { AdminComponent } from './components/admin/admin.component';
 import { HotelComponent } from './components/hotel/hotel.component';
 import { CityComponent } from './components/city/city.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CityComponent } from './components/city/city.component';
     FormLoginComponent,
     AdminComponent,
     HotelComponent,
-    CityComponent
+    CityComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

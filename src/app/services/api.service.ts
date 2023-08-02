@@ -4,6 +4,7 @@ import { environment } from 'src/environment/environment';
 import { Hotel } from '../models/hotel.model';
 import { City } from '../models/city.model';
 import { AuthServiceService } from './auth-service.service';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,11 @@ export class ApiService {
   }
   public putCity(city : City){
     return this.http.put<City>(environment.host+'/cities', city, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})})
+  }
+  public deleteUser(user : User){
+    return this.http.delete<any>(environment.host+'/users/'+ user.id, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})})
+  }
+  public postUser(user : User){
+    return this.http.post<User>(environment.host+'/users', user, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})})
   }
 }

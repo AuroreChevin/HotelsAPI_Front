@@ -9,6 +9,7 @@ import { HotelComponent } from './components/hotel/hotel.component';
 import { CityComponent } from './components/city/city.component';
 import { adminGuard } from './components/admin.guard';
 import { managerGuard } from './components/manager.guard';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   {path : 'hotels', component : HotelsComponent},
@@ -19,6 +20,8 @@ const routes: Routes = [
   {path : 'hotel/:id', component : HotelComponent ,
   canActivate :[managerGuard]},
   {path : 'city/:id', component : CityComponent,
+  canActivate :[adminGuard]},
+  {path : 'user/:id', component : UserComponent,
   canActivate :[adminGuard]},
   {path : '', redirectTo : 'hotels', pathMatch :'full' },
   {path : '404', component : NotFoundComponent },
