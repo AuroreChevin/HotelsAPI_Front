@@ -3,6 +3,7 @@ import { Hotel } from './models/hotel.model';
 import { City } from './models/city.model';
 import { ApiService } from './services/api.service';
 import { AuthServiceService } from './services/auth-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit{
   listHotels : Hotel[] = [];
   listCities : City [] = [];
   error : string | undefined;
-  constructor(private apiService : ApiService, public authService : AuthServiceService){}
+  constructor(private apiService : ApiService, public authService : AuthServiceService, private router : Router){}
   ngOnInit(): void {
   }
   public isLoggedIn(){
@@ -30,5 +31,6 @@ export class AppComponent implements OnInit{
  public logout(){
   this.authService.clearStorage();
   window.location.reload();
+  this.router.navigateByUrl('/hotels');
 }
 }

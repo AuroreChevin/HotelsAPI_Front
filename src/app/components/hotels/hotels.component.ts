@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { City } from 'src/app/models/city.model';
 import { Hotel } from 'src/app/models/hotel.model';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { environment } from 'src/environment/environment';
 
 @Component({
@@ -23,7 +24,7 @@ export class HotelsComponent implements OnInit{
   selectedFiles : any;
   searchForm : FormGroup;
   searchError: any;
-  constructor(private apiService : ApiService, private router : Router){
+  constructor(private apiService : ApiService, private router : Router, public authService : AuthServiceService){
     this.searchForm = new FormGroup({
       keyword: new FormControl()
     })
@@ -84,13 +85,13 @@ export class HotelsComponent implements OnInit{
   }
   onSearch(form : FormGroup){
     if(form.valid){
-      this.apiService.getCityByKeyword(form.value.keyword).subscribe({
+      this.apiService.getHotelByCityByKeyword(form.value.keyword).subscribe({
         next: (data) => {
           if (data.length === 0) {
             this.searchError = "Aucune ville trouvée !"
-            this.listCities = [];
+            this.listHotels = [];
           } else {
-            this.listCities = data
+            this.listHotels = data
             this.searchError = ""
           }
         },

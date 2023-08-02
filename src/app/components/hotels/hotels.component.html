@@ -28,7 +28,7 @@
                   <div class="row g-0">
                         <div class="col">
                           <div class="card-body">
-                            <div>
+                            <div *ngIf="this.authService.isAdmin()">
                               <button class="btn btn-dark mb-2" (click)="onEditPhoto(hotel)">Photo
                               </button>
                               <p *ngIf="editPhoto && currentHotel == hotel">

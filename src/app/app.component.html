@@ -5,7 +5,7 @@
           <a class="nav-link text-white" href="#" (click)="getAllHotels()">Hôtels</a>
       </li>      
       <li class="nav-item" *ngIf="this.authService.isAdmin()">
-          <a class="nav-link text-white" >Dashboard Admin</a>
+          <a class="nav-link text-white" routerLink="/admin">Dashboard Admin</a>
       </li>
   </ul>
   <ul class="navbar-nav ms-auto" >

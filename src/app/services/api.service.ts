@@ -30,7 +30,7 @@ export class ApiService {
   public getCityById(id : number){
     return this.http.get<City>(environment.host+ '/cities/'+id)
   }
-  public getCityByKeyword(keyword : string){
-    return this.http.get<City[]>(environment.host+ '/cities/'+keyword)
+  public getHotelByCityByKeyword(keyword : string){
+    return this.http.get<Hotel[]>(environment.host+ '/hotels/city/'+keyword)
   }
 }
