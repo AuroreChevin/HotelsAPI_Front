@@ -43,4 +43,13 @@ export class ApiService {
   public putHotel(hotel : Hotel){
     return this.http.put<Hotel>(environment.host+'/hotels', hotel, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})})
   }
+  public deleteCity(city : City){
+    return this.http.delete<any>(environment.host+'/cities/'+ city.id, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})})
+  }
+  public postCity(city : City){
+    return this.http.post<City>(environment.host+'/cities', city, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})})
+  }
+  public putCity(city : City){
+    return this.http.put<City>(environment.host+'/cities', city, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})})
+  }
 }

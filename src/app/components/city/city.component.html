@@ -1,0 +1,20 @@
+<div class="container ">
+    <div class="col-md-3 m-auto">
+        <form [formGroup]="myForm" (ngSubmit)="onSaveCity(myForm)">
+            <div *ngIf = "myForm.value.id"class="form-group">
+                <label class="control-label">Id : {{myForm!.value.id}}</label>
+            </div> 
+            <div class="form-group">
+                <label class="control-label">Nom de la ville :</label>
+                <input type="text" formControlName="cityName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description :</label>
+                <input type="text" formControlName="description" class="form-control">
+            </div>
+            <button *ngIf="!status" type="submit" class="btn btn-primary mt-2">Ajouter</button>
+            <button *ngIf="status" type="submit" class="btn btn-success mt-2">Mettre à jour</button>
+            <div class="text-danger"> {{error}}</div>       
+        </form>        
+    </div>    
+</div>

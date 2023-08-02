@@ -46,5 +46,16 @@ export class AdminComponent {
       complete : () => this.error = ""
     });
    }
-   
+   onDeleteCity(city : City){
+    this.apiService.deleteCity(city).subscribe({
+      next : (data) =>console.log(data),
+      error : (err)=> this.error = "problème à la suppression",
+      complete : () => this.router.navigateByUrl('admin'),
+    })
+    confirm('Voulez-vous vraiment supprimer cette ville ?');
+    window.location.reload();
+  }
+  onUpdateCity(city : City) {
+    this.router.navigateByUrl('city/' + city.id);
+  }
 }
