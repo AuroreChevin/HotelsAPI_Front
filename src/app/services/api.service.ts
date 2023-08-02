@@ -1,15 +1,16 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environment/environment';
 import { Hotel } from '../models/hotel.model';
 import { City } from '../models/city.model';
+import { AuthServiceService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private authService : AuthServiceService) { }
   public getAllHotels(){
     return this.http.get<Hotel[]>(environment.host+'/hotels');
   }
@@ -32,5 +33,14 @@ export class ApiService {
   }
   public getHotelByCityByKeyword(keyword : string){
     return this.http.get<Hotel[]>(environment.host+ '/hotels/city/'+keyword)
+  }
+  public deleteHotel(hotel : Hotel){
+    return this.http.delete<any>(environment.host+'/hotels/'+ hotel.id, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})})
+  }
+  public postHotel(hotel : Hotel){
+    return this.http.post<Hotel>(environment.host+'/hotels', hotel, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})})
+  }
+  public putHotel(hotel : Hotel){
+    return this.http.put<Hotel>(environment.host+'/hotels', hotel, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})})
   }
 }

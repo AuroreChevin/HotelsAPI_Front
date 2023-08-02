@@ -9,6 +9,7 @@ import { ZoomHotelComponent } from './components/zoom-hotel/zoom-hotel.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { HotelComponent } from './components/hotel/hotel.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AdminComponent } from './components/admin/admin.component';
     NotFoundComponent,
     ZoomHotelComponent,
     FormLoginComponent,
-    AdminComponent
+    AdminComponent,
+    HotelComponent
   ],
   imports: [
     BrowserModule,

@@ -29,7 +29,6 @@ export class AdminComponent {
       error: (err) => this.error = "Problème au chargement de la liste",
       complete : () => this.error = ""
     });
-    this.showTable = true;
   }
   getListHotels(){
     this.apiService.getAllHotels().subscribe({
@@ -47,4 +46,5 @@ export class AdminComponent {
       complete : () => this.error = ""
     });
    }
+   
 }

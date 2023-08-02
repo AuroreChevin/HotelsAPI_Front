@@ -9,6 +9,8 @@
                   <li class="nav-item" >
                       <button class="nav-link align-middle px-0 text-white" (click)="getListCities()">Villes
                       </button>
+                      <button class="nav-link align-middle px-0 text-white" routerLink="/hotels">Hôtels
+                    </button>
                     <button class="nav-link align-middle px-0 text-white" (click)="getListManagers()">Managers
                     </button>
                   </li>
@@ -32,13 +34,12 @@
                     <td>{{city.description}}</td>
                     <td><button class="btn btn-danger me-2">Delete</button>
                         <button class="btn btn-success me-2">Edit</button>
-                        <button class="btn btn-primary ">New</button>
                     </td>
                 </tr>
                 </tbody>
             </table>
           </ng-container>
-          <ng-container>
+          <ng-container >
             <h3 class="text-center">Managers</h3>
             <table class="table table-striped" >
                 <thead>
@@ -51,7 +52,6 @@
                     <td>{{user.username}}</td>
                     <td><button class="btn btn-danger me-2">Delete</button>
                         <button class="btn btn-success me-2">Edit</button>
-                        <button class="btn btn-primary ">New</button>
                     </td>
                 </tr>
                 </tbody>

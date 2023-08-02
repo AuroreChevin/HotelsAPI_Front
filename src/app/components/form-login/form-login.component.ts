@@ -15,7 +15,7 @@ export class FormLoginComponent implements OnInit{
   constructor(private formBuilder: FormBuilder,private router: Router, private authService : AuthServiceService) {
     this.myForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['',[Validators.required, Validators.pattern('[0-9]{4}$')]]
     })
   }
   ngOnInit(): void {

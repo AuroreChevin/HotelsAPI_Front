@@ -1,0 +1,47 @@
+<div class="container ">
+    <div class="col-md-3 m-auto">
+        <form [formGroup]="myForm" (ngSubmit)="onSaveHotel(myForm)">
+            <div *ngIf = "myForm.value.id"class="form-group">
+                <label class="control-label">Id : {{myForm!.value.id}}</label>
+            </div> 
+            <div class="form-group">
+                <label class="control-label">Nom de l'hôtel :</label>
+                <input type="text" formControlName="hotelName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Adresse :</label>
+                <input type="text" formControlName="address" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tél :</label>
+                <input type="text" formControlName="phone" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Nombre de chambres :</label>
+                <input type="text" formControlName="nbRoom" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Nombre d'étoiles :</label>
+                <input type="text" formControlName="nbStar" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Prix de la chambre par nuitée :</label>
+                <input type="text" formControlName="priceRoom" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ville :</label>
+                <select class="form-select form-control" *ngIf="listCities" formControlName="city">
+                    <option *ngFor="let city of listCities" 
+                    [ngValue]="city">{{city.cityName}}</option>
+                </select>
+            </div>
+            <!--<div class="mt-2">
+                <input type="file" >
+                <button class="btn btn-success mt-2">Upload</button>
+            </div>--->
+            <button *ngIf="!status" type="submit" class="btn btn-primary mt-2">Ajouter</button>
+            <button *ngIf="status" type="submit" class="btn btn-success mt-2">Mettre à jour</button>
+            <div class="text-danger"> {{error}}</div>       
+        </form>        
+    </div>    
+</div>

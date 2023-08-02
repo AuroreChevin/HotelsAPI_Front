@@ -99,7 +99,20 @@ export class HotelsComponent implements OnInit{
         complete: () => this.error = ""
       })
     }
-
-    }
   }
+  onDeleteHotel(hotel : Hotel){
+    this.apiService.deleteHotel(hotel).subscribe({
+      next : (data) =>console.log(data),
+      error : (err)=> this.error = "problème à la suppression",
+      complete : () => this.getListHotels(),
+    })
+    confirm('Voulez-vous vraiment supprimer cet hôtel ?');
+  }
+  onAddHotel(){
+    this.router.navigateByUrl("/hotel")
+  }
+  onUpdateHotel(hotel : Hotel) {
+    this.router.navigateByUrl('hotel/' + hotel.id);
+  }
+}
 

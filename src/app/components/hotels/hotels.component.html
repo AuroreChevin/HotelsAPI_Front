@@ -23,6 +23,7 @@
     <div class="col py-3">
       <div class="row justify-content-center">
         <ng-container *ngIf="listHotels">
+          <div *ngIf="this.authService.isAdmin()" ><a class="btn btn-primary me-2" routerLink="/hotel/:id">Ajouter un nouvel hôtel</a></div>
               <div class="card m-3 border-success" style="width: 350px; margin-right: 10px; margin-bottom: 10px;" *ngFor="let hotel of listHotels">
                   <img class="img-thumbnail img-rounded btn" alt="" (click)="onHotelDetail(hotel)" [src]="host + '/photo/' +hotel.id"/>
                   <div class="row g-0">
@@ -41,9 +42,16 @@
                               <p class="card-text">Tél : <small>{{hotel.phone}}</small></p>
                               <p class="card-text">Nombre d'étoiles : <small>{{hotel.nbStar}}</small></p>
                               <p class="card-text">Prix/Nuit : <small>{{hotel.priceRoom | currency : 'EUR'}}</small></p>
+                              <div *ngIf="this.authService.isLoggedIn()">
+                                <a class="btn btn-danger me-2 ms-2" *ngIf="this.authService.isAdmin()" (click)="onDeleteHotel(hotel)">Delete</a>
+                                <a class="btn btn-success" (click)="onUpdateHotel(hotel)" >Edit</a>
+                              </div>
+                              <div >
+                                
+                              </div>
                           </div>
                       </div>
-                </div>
+                  </div>
               </div>
         </ng-container>
       </div>
