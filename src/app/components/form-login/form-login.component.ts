@@ -33,7 +33,7 @@ export class FormLoginComponent implements OnInit{
       console.log(myForm.value);
       this.router.navigateByUrl('hotels');
     } else{
-      alert("Identifiants icorrects");
+      alert("Identifiants incorrects");
     }
   }
 }

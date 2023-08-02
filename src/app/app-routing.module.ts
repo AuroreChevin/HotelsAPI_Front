@@ -7,14 +7,19 @@ import { FormLoginComponent } from './components/form-login/form-login.component
 import { AdminComponent } from './components/admin/admin.component';
 import { HotelComponent } from './components/hotel/hotel.component';
 import { CityComponent } from './components/city/city.component';
+import { adminGuard } from './components/admin.guard';
+import { managerGuard } from './components/manager.guard';
 
 const routes: Routes = [
   {path : 'hotels', component : HotelsComponent},
   {path : 'zoom-hotel/:id', component : ZoomHotelComponent},
   {path :'form-login', component : FormLoginComponent},
-  {path : 'admin', component : AdminComponent},
-  {path : 'hotel/:id', component : HotelComponent},
-  {path : 'city/:id', component : CityComponent},
+  {path : 'admin', component : AdminComponent,
+   canActivate :[adminGuard]},
+  {path : 'hotel/:id', component : HotelComponent ,
+  canActivate :[managerGuard]},
+  {path : 'city/:id', component : CityComponent,
+  canActivate :[adminGuard]},
   {path : '', redirectTo : 'hotels', pathMatch :'full' },
   {path : '404', component : NotFoundComponent },
   {path : '**', redirectTo: '/404'}

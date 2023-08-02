@@ -9,7 +9,7 @@ import { environment } from 'src/environment/environment';
   providedIn: 'root'
 })
 export class AuthServiceService {
-  userConnected : User = new User('', '', [])
+  userConnected : User = new User(0,'', '', [])
   constructor(private http : HttpClient) { }
 
   public postUser(username : string, password : string) : Observable<any>{

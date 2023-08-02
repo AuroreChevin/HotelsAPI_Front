@@ -45,11 +45,12 @@
             <table class="table table-striped" >
                 <thead>
                     <tr>
-                        <th>Nom</th><th>Actions</th>
+                        <th>Id</th><th>Nom</th><th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let user of listManagers">
+                    <td>{{user.id}}</td>
                     <td>{{user.username}}</td>
                     <td><button class="btn btn-danger me-2">Delete</button>
                         <button class="btn btn-success me-2">Edit</button>
