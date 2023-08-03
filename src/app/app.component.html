@@ -10,7 +10,7 @@
   </ul>
   <ul class="navbar-nav ms-auto" >
       <li *ngIf="isLoggedIn()" >
-          <span class="fs-3 text-capitalize text-white">{{this.authService.getUser().username}}</span>
+          <span class="fs-3 text-capitalize text-white"*ngIf="!this.authService.isAdmin()">{{this.authService.getUser().username}}</span>
         </li>
       <ng-container *ngIf="this.authService.getToken() == null , else elseBlock" >
       <li class="nav-item">

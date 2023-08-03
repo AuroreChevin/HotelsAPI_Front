@@ -22,8 +22,8 @@ export class AdminComponent {
     }
   
   ngOnInit(): void {
-    this.getListCities;
-    this.getListManagers
+    this.getListCities();
+    this.getListManagers();
   }
   getListCities(){
     this.apiService.getAllCities().subscribe({
@@ -66,7 +66,7 @@ export class AdminComponent {
       error : (err)=> this.error = "problème à la suppression",
       complete : () => this.router.navigateByUrl('admin'),
     })
-    confirm('Voulez-vous vraiment supprimer cette ville ?');
+    confirm('Voulez-vous vraiment supprimer cet utilisateur ?');
     window.location.reload();
   }
 }

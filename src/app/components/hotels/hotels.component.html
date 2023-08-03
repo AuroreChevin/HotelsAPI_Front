@@ -38,10 +38,9 @@
                               </p> 
                             </div>                   
                               <h4 class="card-title text-center text-danger">{{hotel.hotelName}}</h4>
-                              <p class="card-text">{{hotel.address}}</p>
-                              <p class="card-text">Tél : <small>{{hotel.phone}}</small></p>
                               <p class="card-text">Nombre d'étoiles : <small>{{hotel.nbStar}}</small></p>
                               <p class="card-text">Prix/Nuit : <small>{{hotel.priceRoom | currency : 'EUR'}}</small></p>
+                              <h5 class="card-text fs-5 text-center text-success">{{hotel.city.cityName}}</h5>
                               <div *ngIf="this.authService.isLoggedIn()">
                                 <a class="btn btn-danger me-2 ms-2" *ngIf="this.authService.isAdmin()" (click)="onDeleteHotel(hotel)">Delete</a>
                                 <a class="btn btn-success" (click)="onUpdateHotel(hotel)" >Edit</a>

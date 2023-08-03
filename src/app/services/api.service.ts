@@ -24,7 +24,7 @@ export class ApiService {
   public postPhotoHotels(file : File, id : number){
     let formData : FormData = new FormData();
     formData.append('file', file);
-    return this.http.post<any>(environment.host+'/photo/'+id, formData);
+    return this.http.post<any>(environment.host+'/photo/'+id, formData, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})});
   }
   public getHotelById(id : number){
     return this.http.get<Hotel>(environment.host+ '/hotels/'+id)
