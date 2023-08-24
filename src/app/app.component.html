@@ -7,6 +7,9 @@
       <li class="nav-item" *ngIf="this.authService.isAdmin()">
           <a class="nav-link text-white" routerLink="/admin">Dashboard Admin</a>
       </li>
+      <li class="nav-item" *ngIf="this.authService.isManager()">
+        <a class="nav-link text-white" routerLink="/manager">Dashboard Manager</a>
+    </li>
   </ul>
   <ul class="navbar-nav ms-auto" >
       <li *ngIf="isLoggedIn()" >

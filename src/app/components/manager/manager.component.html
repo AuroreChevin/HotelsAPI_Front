@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+              <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                  <span class="fs-3 d-none d-sm-inline  text-capitalize" >Bonjour {{this.authService.getUser().username}}</span>
+              </a>
+              <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                  <li class="nav-item" >
+                      
+                      <button class="nav-link align-middle px-0 text-white" routerLink="/hotels">Hôtels
+                    </button>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="col">
+        <div class="row justify-content-center" >
+          <ng-container>
+            <h3 class="text-center">Villes</h3>
+            <div><button class="btn btn-primary me-2" routerLink="/city/:id">Ajouter une nouvelle ville</button></div>
+            <table class="table table-striped">
+                <thead >
+                    <tr>
+                        <th>Id</th><th>Ville</th><th>Description</th><th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <!---<tr *ngFor="hotel of listHotels">
+                    <td>{{hotel.id}}</td>
+                    <td>{{hotel.cityName}}</td>
+                    <td>{{hotel.description}}</td>
+                    <td>
+                        <button class="btn btn-success me-2" (click)="onUpdateCity(hotel)">Edit</button>
+                    </td>
+                </tr>--->
+                </tbody>
+            </table>
+          </ng-container>

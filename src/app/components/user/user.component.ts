@@ -26,7 +26,7 @@ export class UserComponent {
   }
   onSaveUser(myForm : FormGroup){
     if(myForm.valid){
-      this.user = new User(myForm.value.id, myForm.value.username,myForm.value.password, ["MANAGER"]);
+      this.user = new User(myForm.value.id, myForm.value.username,myForm.value.password, []);
       this.apiService.postUser(this.user).subscribe({
         next: (data) => (console.log(data)),
         error: (err) => (this.error = err.message),

@@ -12,6 +12,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { HotelComponent } from './components/hotel/hotel.component';
 import { CityComponent } from './components/city/city.component';
 import { UserComponent } from './components/user/user.component';
+import { ManagerComponent } from './components/manager/manager.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UserComponent } from './components/user/user.component';
     AdminComponent,
     HotelComponent,
     CityComponent,
-    UserComponent
+    UserComponent,
+    ManagerComponent
   ],
   imports: [
     BrowserModule,

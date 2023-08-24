@@ -60,7 +60,7 @@ export class HotelComponent implements OnInit{
       else{
       this.city = new City(myForm.value.city.id, myForm.value.city.cityName, myForm.value.city.description);
       this.hotel = new Hotel(myForm.value.id, myForm.value.hotelName,myForm.value.address, myForm.value.phone,
-                            myForm.value.nbRoom,myForm.value.nbStar,myForm.value.priceRoom,this.city);
+                            myForm.value.nbRoom,myForm.value.nbStar,myForm.value.priceRoom,this.city, []);
       this.apiService.postHotel(this.hotel).subscribe({
         next: (data) => (console.log(data)),
         error: (err) => (this.error = err.message),
@@ -75,7 +75,7 @@ export class HotelComponent implements OnInit{
   updateHotel(myForm :FormGroup){
     this.city = new City(myForm.value.city.id, myForm.value.city.cityName, myForm.value.city.description);
       this.hotel = new Hotel(myForm.value.id, myForm.value.hotelName,myForm.value.address, myForm.value.phone,
-                            myForm.value.nbRoom,myForm.value.nbStar,myForm.value.priceRoom,this.city);
+                            myForm.value.nbRoom,myForm.value.nbStar,myForm.value.priceRoom,this.city, []);
       this.apiService.putHotel(this.hotel).subscribe({
         next: (data) => (console.log(data)),
         error: (err) => (this.error = err.message),

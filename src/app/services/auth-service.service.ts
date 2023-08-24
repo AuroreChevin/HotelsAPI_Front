@@ -60,8 +60,8 @@ export class AuthServiceService {
     }
     return false;
   }
+  
   public getManagers(rolename : string){
-    console.log('coucou')
     return this.http.get<User[]>(environment.host+ '/users/'+rolename, {headers : new HttpHeaders({'Authorization' : this.getToken()}) });
   }
 }

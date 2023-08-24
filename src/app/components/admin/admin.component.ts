@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { City } from 'src/app/models/city.model';
 import { Hotel } from 'src/app/models/hotel.model';
@@ -11,7 +11,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit{
   listCities : City [] = [];
   listManagers : User[] = [];
   listHotels : Hotel[] = [];

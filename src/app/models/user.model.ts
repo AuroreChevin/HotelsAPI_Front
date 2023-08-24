@@ -1,3 +1,5 @@
+import { Hotel } from "./hotel.model";
+
 export class User {
     id: number;
     username : string;

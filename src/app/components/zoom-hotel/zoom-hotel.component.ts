@@ -22,7 +22,7 @@ export class ZoomHotelComponent implements OnInit{
       this.status = true;
       this.apiService.getHotelById(id).subscribe({
         next : (data) => {
-            this.hotel = data;
+            this.hotel = data; console.log(this.hotel)
         },
         error : (err) => this.error = "problème de chargement de l'hôtel"
       })

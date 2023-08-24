@@ -59,4 +59,7 @@ export class ApiService {
   public postUser(user : User){
     return this.http.post<User>(environment.host+'/users', user, {headers : new HttpHeaders({'Authorization' : this.authService.getToken()})})
   }
+  public getHotelsByUserId(id : number){
+    return this.http.get<Hotel[]>(environment.host+'/hotels/user/'+id);
+  }
 }
